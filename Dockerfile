@@ -26,7 +26,7 @@ RUN cd /tmp/vim \
 		--with-python-config-dir=/usr/lib64/python2.6/config \
 		--enable-rubyinterp \
 		--with-ruby-command=/usr/bin/ruby \
-	&& make -j$(nproc) \
+	&& make -j$(($(nproc) + $(($(nproc) / 4)))) \
 	&& ./src/vim --version \
 	&& make install \
 	&& rm -rf /tmp/vim
